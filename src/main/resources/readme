@@ -6,3 +6,25 @@
 <COUNTRY NAME> :== STRING
 <SEARCH CRITERIA> :== <SEARCH CRITERION>,<SEARCH CRITERIA>
 <SEARCH CRITERION> :== STRING
+
+Examples:
+1.Shows all towns
+TOWNS;
+2. Shows all countries
+COUNTRIES;
+3. creates country
+CREATE COUNTRY UKRAINE;
+4.Creates town that is a capital
+UKRAINE << KIEV* 4000000;
+5.Creates town that is not a capital
+UKRAINE << Poltava;
+6.Remove town with id
+REMOVE TOWN 565;
+7. Remove country with id and all the towns in the country
+REMOVE COUNTRY 23;
+8 Update town
+UPDATE TOWN 565 Kiev* 5000000;
+9 Update country
+UPDATE COUNTRY 23 Ucrania;
+10. Search be country or city name
+SEARCH iev;

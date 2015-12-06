@@ -3,7 +3,7 @@ package domain;
 /**
  * Created by hlib on 12/1/15.
  */
-public class Country {
+public class Country extends DomainObject {
     private String id;
     private String name;
 
