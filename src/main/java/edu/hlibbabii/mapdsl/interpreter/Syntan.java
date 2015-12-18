@@ -32,6 +32,7 @@ public class Syntan {
     }
 
     public Command doAn() {
+        currentState = StateFactory.getInitialState();
         Command currentCommand = null;
         Pair<State, Command> pair;
         List<State> states = new ArrayList<>();

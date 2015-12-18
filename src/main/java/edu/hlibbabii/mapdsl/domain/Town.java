@@ -7,8 +7,11 @@ public class Town extends DomainObject {
     private String id;
     private String name;
     private boolean capital;
-    private int population;
+    private long population;
     private Country country;
+
+    public Town() {
+    }
 
     public String getId() {
         return id;
@@ -34,11 +37,11 @@ public class Town extends DomainObject {
         this.capital = capital;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
@@ -80,7 +83,7 @@ public class Town extends DomainObject {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (capital ? 1 : 0);
-        result = 31 * result + population;
+        result = 31 * result + (int) (population ^ (population >>> 32));
         result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }

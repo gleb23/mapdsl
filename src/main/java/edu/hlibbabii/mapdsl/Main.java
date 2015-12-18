@@ -23,5 +23,17 @@ public class Main {
         lexAn.set("CREATE COUNTRY Ukraine");
         Command command3 = syntan.doAn();
         command3.execute();
+
+        lexAn.set("UKRAINE << KIEV * 4000000");
+        Command command4 = syntan.doAn();
+        command4.execute();
+
+        lexAn.set("UKRAINE << Poltava");
+        Command command5 = syntan.doAn();
+        command5.execute();
+
+        lexAn.set("REMOVE TOWN 565");
+        Command command6 = syntan.doAn();
+        command6.execute();
     }
 }

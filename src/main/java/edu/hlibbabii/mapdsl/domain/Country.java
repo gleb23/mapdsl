@@ -7,6 +7,13 @@ public class Country extends DomainObject {
     private String id;
     private String name;
 
+    public Country() {
+    }
+
+    public Country(String name) {
+        this.name = name;
+    }
+
     public String getId() {
         return id;
     }

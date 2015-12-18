@@ -1,6 +1,7 @@
 package edu.hlibbabii.mapdsl.interpreter.state;
 
 import edu.hlibbabii.mapdsl.command.*;
+import edu.hlibbabii.mapdsl.domain.Country;
 import edu.hlibbabii.mapdsl.domain.DomainObject;
 import edu.hlibbabii.mapdsl.domain.Town;
 import javafx.util.Pair;
@@ -17,13 +18,17 @@ public class InitialState extends State {
     @Override
     public Pair<State, Command> onIdentifier(Command command, String identifier) {
         Town town = new Town();
-        town.setName(identifier);
+        town.setCountry(new Country(identifier));
         return new Pair<>(StateFactory.getAfterIdentifierAtTheBeginningState(), new CreateCommand<>(town));
     }
 
     @Override
     public Pair<State, Command> onShowAllKeyWord(Command command, Class<? extends DomainObject> domainClass) {
-        return new Pair<>(StateFactory.getAfterShowAllKeywordsState(), new SelectCommand<>(domainClass));
+        try {
+            return new Pair<>(StateFactory.getAfterShowAllKeywordState(), new SelectCommand<>(domainClass.newInstance()));
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

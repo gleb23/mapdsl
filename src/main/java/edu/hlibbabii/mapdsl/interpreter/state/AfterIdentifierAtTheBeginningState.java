@@ -9,6 +9,6 @@ import javafx.util.Pair;
 public class AfterIdentifierAtTheBeginningState extends State {
     @Override
     public Pair<State, Command> onDoubleLessThan(Command command) {
-        return super.onDoubleLessThan(command);
+        return new Pair<>(StateFactory.getAfterDoubleLessThanState(), command);
     }
 }
