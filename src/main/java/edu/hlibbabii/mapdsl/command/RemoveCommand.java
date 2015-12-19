@@ -8,6 +8,6 @@ import edu.hlibbabii.mapdsl.domain.DomainObject;
 public class RemoveCommand<T extends DomainObject> extends CrudCommand<T> {
     @Override
     public void execute() {
-        System.out.println("Remove edu.hlibbabii.mapdsl.command");
+        System.out.println("Remove edu.hlibbabii.mapdsl.command "  + domainObject);
     }
 }

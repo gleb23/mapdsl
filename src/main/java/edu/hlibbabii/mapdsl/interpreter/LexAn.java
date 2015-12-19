@@ -4,6 +4,7 @@ import edu.hlibbabii.mapdsl.domain.Country;
 import edu.hlibbabii.mapdsl.domain.DomainObject;
 import edu.hlibbabii.mapdsl.domain.Town;
 import edu.hlibbabii.mapdsl.interpreter.tokens.*;
+import edu.hlibbabii.mapdsl.interpreter.tokens.NumberToken;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -62,12 +63,24 @@ public class LexAn implements Iterator<Token> {
             return new SearchKeyWord();
         } else if ("<<".equals(str)) {
             return new DoubleLessThan();
+        } else if ("*".equals(str)) {
+            return new Star();
         } else if (DOMAIN_KEYWORDS.containsKey(str)) {
             return new DomainKeyword(DOMAIN_KEYWORDS.get(str));
         } else if (SHOW_ALL_KEYWORDS_MAP.containsKey(str)) {
             return new ShowAllKeyword(SHOW_ALL_KEYWORDS_MAP.get(str));
-        }else {
+        } else if (getNumber(str) != null) {
+            return getNumber(str);
+        } else {
             return new Identifier(str);
+        }
+    }
+
+    private Token getNumber(String str) {
+        try {
+            return new NumberToken(Long.parseLong(str));
+        } catch (NumberFormatException ex) {
+            return null;
         }
     }
 }

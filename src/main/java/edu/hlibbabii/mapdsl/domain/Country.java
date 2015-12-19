@@ -4,7 +4,6 @@ package edu.hlibbabii.mapdsl.domain;
  * Created by hlib on 12/1/15.
  */
 public class Country extends DomainObject {
-    private String id;
     private String name;
 
     public Country() {
@@ -12,14 +11,6 @@ public class Country extends DomainObject {
 
     public Country(String name) {
         this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -13,7 +13,7 @@ public class AfterTownNameInTownDefinition extends State {
     public Pair<State, Command> onNumber(Command command, long number) {
         CrudCommand<Town> crudCommand = (CrudCommand) command;
         crudCommand.getDomainObject().setPopulation(number);
-        return new Pair<>(StateFactory.getAfterPopulationInTownDefinition(), command);
+        return new Pair<>(StateFactory.getInitialState(), command);
     }
 
     @Override

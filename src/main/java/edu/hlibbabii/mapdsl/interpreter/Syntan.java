@@ -4,10 +4,7 @@ import edu.hlibbabii.mapdsl.command.Command;
 import edu.hlibbabii.mapdsl.command.EmptyCommand;
 import edu.hlibbabii.mapdsl.interpreter.state.State;
 import edu.hlibbabii.mapdsl.interpreter.state.StateFactory;
-import edu.hlibbabii.mapdsl.interpreter.tokens.DomainKeyword;
-import edu.hlibbabii.mapdsl.interpreter.tokens.Identifier;
-import edu.hlibbabii.mapdsl.interpreter.tokens.ShowAllKeyword;
-import edu.hlibbabii.mapdsl.interpreter.tokens.Token;
+import edu.hlibbabii.mapdsl.interpreter.tokens.*;
 import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +55,8 @@ public class Syntan {
                     pair = currentState.onSearchKeyWord(currentCommand);
                 } else if (token.isRemoveKeyWord()) {
                     pair = currentState.onRemoveKeyWord(currentCommand);
+                } else if (token.isNumber()) {
+                    pair = currentState.onNumber(currentCommand, ((NumberToken)token).getValue());
                 } else {
                     throw new RuntimeException("Unrecognized token: " + token);
                 }
@@ -65,7 +64,7 @@ public class Syntan {
                 currentCommand = pair.getValue();
                 states.add(currentState);
             } catch (ParseException ex) {
-                log.info(states.toString());
+                log.info(states.toString(), ex);
                 return new EmptyCommand();
             }
         }

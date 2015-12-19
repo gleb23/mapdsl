@@ -4,21 +4,12 @@ package edu.hlibbabii.mapdsl.domain;
  * Created by hlib on 12/1/15.
  */
 public class Town extends DomainObject {
-    private String id;
     private String name;
     private boolean capital;
     private long population;
     private Country country;
 
     public Town() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -56,7 +47,7 @@ public class Town extends DomainObject {
     @Override
     public String toString() {
         return "Town{" +
-                "id='" + id + '\'' +
+                "id='" + getId() + '\'' +
                 ", name='" + name + '\'' +
                 ", capital=" + capital +
                 ", population=" + population +
@@ -72,7 +63,7 @@ public class Town extends DomainObject {
 
         if (capital != town.capital) return false;
         if (population != town.population) return false;
-        if (id != null ? !id.equals(town.id) : town.id != null) return false;
+        if (getId() != null ? !getId().equals(town.getId()) : town.getId() != null) return false;
         if (name != null ? !name.equals(town.name) : town.name != null) return false;
         return !(country != null ? !country.equals(town.country) : town.country != null);
 
@@ -80,7 +71,7 @@ public class Town extends DomainObject {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (capital ? 1 : 0);
         result = 31 * result + (int) (population ^ (population >>> 32));

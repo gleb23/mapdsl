@@ -8,6 +8,6 @@ import edu.hlibbabii.mapdsl.domain.DomainObject;
 public class UpdateCommand<T extends DomainObject> extends CrudCommand<T> {
     @Override
     public void execute() {
-        System.out.println("Update edu.hlibbabii.mapdsl.command");
+        System.out.println("Update edu.hlibbabii.mapdsl.command " + domainObject);
     }
 }

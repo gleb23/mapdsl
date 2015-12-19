@@ -8,7 +8,7 @@ import javafx.util.Pair;
 /**
  * Created by hlib on 18.12.15.
  */
-public class AfterDoubleLessThanState extends State {
+public class BeforeTownDefinitionState extends State {
     @Override
     public Pair<State, Command> onIdentifier(Command command, String identifier) {
         CrudCommand<Town> crudCommand = (CrudCommand) command;

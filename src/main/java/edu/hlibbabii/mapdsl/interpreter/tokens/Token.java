@@ -39,4 +39,6 @@ public class Token {
     public boolean isShowAllKeyword() {
         return false;
     }
+
+    public boolean isNumber() {return false;}
 }

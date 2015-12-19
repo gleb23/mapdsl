@@ -10,6 +10,6 @@ import javafx.util.Pair;
 public class AfterCreateKeywordState extends State {
     @Override
     public Pair<State, Command> onDomainKeyWord(Command command, Class<? extends DomainObject> domainClass) {
-        return new Pair<>(StateFactory.getAfterCreateCountryPhraseState(), command);
+        return new Pair<>(StateFactory.getBegoreCountryDefinitionState(), command);
     }
 }

@@ -25,7 +25,7 @@ public class InitialState extends State {
     @Override
     public Pair<State, Command> onShowAllKeyWord(Command command, Class<? extends DomainObject> domainClass) {
         try {
-            return new Pair<>(StateFactory.getAfterShowAllKeywordState(), new SelectCommand<>(domainClass.newInstance()));
+            return new Pair<>(StateFactory.getInitialState(), new SelectCommand<>(domainClass.newInstance()));
         } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -44,5 +44,10 @@ public class InitialState extends State {
     @Override
     public Pair<State, Command> onRemoveKeyWord(Command command) {
         return new Pair<>(StateFactory.getRemoveCreateKeywordState(), new RemoveCommand<>());
+    }
+
+    @Override
+    public Pair<State, Command> onSearchKeyWord(Command command) {
+        return new Pair<>(StateFactory.getAfterSearchKeywordState(), command);
     }
 }

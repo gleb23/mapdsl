@@ -35,5 +35,21 @@ public class Main {
         lexAn.set("REMOVE TOWN 565");
         Command command6 = syntan.doAn();
         command6.execute();
+
+        lexAn.set("REMOVE COUNTRY 23");
+        Command command7 = syntan.doAn();
+        command7.execute();
+
+        lexAn.set("UPDATE TOWN 565 Kiev* 5000000");
+        Command command8 = syntan.doAn();
+        command8.execute();
+
+        lexAn.set("UPDATE COUNTRY 23 Ucrania");
+        Command command9 = syntan.doAn();
+        command9.execute();
+
+        lexAn.set("SEARCH iev");
+        Command command10 = syntan.doAn();
+        command10.execute();
     }
 }
